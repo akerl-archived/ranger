@@ -1,0 +1,25 @@
+---
+-   name: Install packages for roller
+    pacman: name={{item}} state=present
+    with_items:
+        - python
+        - base-devel
+        - bc
+-   name: Clone roller
+    git: >
+        dest=/opt/roller
+        repo='git://github.com/akerl/roller.git'
+-   name: Clone kernel configs
+    git: >
+        dest=/opt/roller/configs
+        repo='git://github.com/akerl/kernels.git'
+
+-   name: Create /boot/grub
+    file: path=/boot/grub state=directory
+
+-   name: Roll the kernel
+    command: /opt/roller/roller.py -k {{kernel_version}} -c {{kernel_version}} -r {{kernel_revision}}
+-   name: Clean up kernel archives
+    command: /opt/roller/cleanup.py
+...
+
