@@ -11,8 +11,9 @@
 
 -   name: Create puppet directory
     file: path=/etc/puppet state=directory
--   name: Create puppet config
-    template: src=puppet.conf.j2 dest=/etc/puppet/puppet.conf
+-   name: Sync puppet configuration to node
+    connection: local
+    command: rsync -a '../../../puppet/*' root@{{inventory_hostname}}:/etc/puppet/
 -   name: Create temp directory
     copy: src=puppet.conf dest=/usr/lib/tmpfiles.d/puppet.conf
 
