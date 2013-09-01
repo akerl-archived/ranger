@@ -7,7 +7,7 @@
     bindaddress="::"
 
 [agent]
-    server = {{groups['master'][0]}}
+    server = {{groups['master'][0]}}.{{domain}}
     report = true
     pluginsync = true
 
