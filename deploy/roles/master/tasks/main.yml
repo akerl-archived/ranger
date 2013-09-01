@@ -5,5 +5,8 @@
         dest=/etc/systemd/system/multi-user.target.wants/puppetmaster.service
 -   name: Force a systemd reload
     command: systemctl --system daemon-reload
+-   name: Install puppet modules
+    command: puppet module install {{item}}
+    with_items: modules
 ...
 
