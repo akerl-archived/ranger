@@ -22,6 +22,7 @@
         ln -s
         "$(ruby -rubygems -e'puts Gem.default_dir')/gems/puppet-$(puppet --version)/ext/systemd/puppetmaster.service"
         /etc/systemd/system/multi-user.target.wants/puppetmaster.service
-    when: "'is_master' in group_names"
+    when: is_master is defined
+    tags: test
 ...
 

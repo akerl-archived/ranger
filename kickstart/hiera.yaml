@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: ../payload/etc/hiera/data
+:hierarchy:
+  - "%{::fqdn}"
+  - common
+...
+
