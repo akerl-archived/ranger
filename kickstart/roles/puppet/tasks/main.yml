@@ -12,6 +12,10 @@
 -   name: Add puppet user
     raw: puppet resource user puppet ensure=present gid=puppet shell='/sbin/nologin'
 
+-   name: Install puppet modules
+    raw: puppet module install {{item}}
+    with_items: modules
+
 -   name: Enable puppet agent
     raw: >
         ln -s
@@ -23,6 +27,5 @@
         "$(ruby -rubygems -e'puts Gem.default_dir')/gems/puppet-$(puppet --version)/ext/systemd/puppetmaster.service"
         /etc/systemd/system/multi-user.target.wants/puppetmaster.service
     when: is_master is defined
-    tags: test
 ...
 
