@@ -1,0 +1,9 @@
+timeout 25
+default 0
+
+#START
+
+title 3.10.10_1
+root (hd0)
+kernel /boot/vmlinuz-3.10.10_1 root=/dev/xvda ro
+

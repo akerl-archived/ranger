@@ -1,0 +1,11 @@
+---
+-   name: Sync payload to server
+    connection: local
+    shell: >
+        scp
+        -oUserKnownHostsFile=/dev/null
+        -oStrictHostKeyChecking=no
+        -r ../payload/*
+        root@{{ansible_ssh_host}}:/
+...
+

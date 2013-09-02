@@ -1,0 +1,27 @@
+---
+-   name: Install ruby
+    raw: pacman -S --noconfirm ruby
+-   name: Install Puppet and Hiera
+    raw: 'gem install --no-user-install {{item}}'
+    with_items:
+        - puppet
+        - hiera
+
+-   name: Add puppet group
+    raw: puppet resource group puppet ensure=present
+-   name: Add puppet user
+    raw: puppet resource user puppet ensure=present gid=puppet shell='/sbin/nologin'
+
+-   name: Enable puppet agent
+    raw: >
+        ln -s
+        "$(ruby -rubygems -e'puts Gem.default_dir')/gems/puppet-$(puppet --version)/ext/systemd/puppetagent.service"
+        /etc/systemd/system/multi-user.target.wants/puppet.service 
+-   name: Enable puppet master
+    raw: >
+        ln -s
+        "$(ruby -rubygems -e'puts Gem.default_dir')/gems/puppet-$(puppet --version)/ext/systemd/puppetmaster.service"
+        /etc/systemd/system/multi-user.target.wants/puppetmaster.service
+    when: "'is_master' in group_names"
+...
+

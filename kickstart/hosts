@@ -1,0 +1,11 @@
+[all]
+miro    ansible_ssh_host=69.164.217.166 linode_id=76789
+grego   ansible_ssh_host=50.116.33.15 linode_id=180528
+olhado  ansible_ssh_host=173.255.193.119 linode_id=171522
+
+[is_master]
+grego
+
+[all:vars]
+domain='a-rwx.org'
+

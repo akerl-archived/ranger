@@ -1,0 +1,5 @@
+---
+ansible:
+    domain: a-rwx.org
+...
+
