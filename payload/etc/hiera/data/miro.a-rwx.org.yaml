@@ -1,6 +1,0 @@
----
-ansible:
-    ansible_ssh_host: 69.164.217.166
-    linode_id: 76789
-...
-

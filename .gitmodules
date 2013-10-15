@@ -1,0 +1,3 @@
+[submodule "mannequin"]
+	path = mannequin
+	url = git@github.com:akerl/mannequin.git

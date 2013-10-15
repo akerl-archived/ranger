@@ -1,7 +1,0 @@
----
-ansible:
-    ansible_ssh_host: 50.116.33.15
-    linode_id: 180528
-    is_master: yes
-...
-
