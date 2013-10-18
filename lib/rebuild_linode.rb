@@ -1,6 +1,4 @@
-require 'keychain'
 require 'linode'
 
-MyKeychain = Keychain.open($node_data[:keychain])
-
+MyAPI = Linode.new(:api_key => $node_info[:keychain].where(:service => 'linode-api').first.password)
 
